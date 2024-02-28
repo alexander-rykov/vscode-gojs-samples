@@ -5,7 +5,15 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.commands.registerCommand('logicCircuit.start', () => {
 			//vscode.window.activeTextEditor?.document.getText();
-			LogicCircuitPanel.createOrShow(context.extensionUri);
+            if (vscode.window.activeTextEditor)
+            {
+                const document = vscode.window.activeTextEditor?.document;
+                LogicCircuitPanel.createOrShow(context.extensionUri, vscode.window.activeTextEditor.document);
+            }
+            else
+            {
+                vscode.window.showErrorMessage('No document');
+            }
 		})
 	);
 
@@ -30,7 +38,8 @@ export function activate(context: vscode.ExtensionContext) {
 				console.log(`Got state: ${state}`);
 				// Reset the webview options so we use latest uri for `localResourceRoots`.
 				webviewPanel.webview.options = getWebviewOptions(context.extensionUri);
-				LogicCircuitPanel.revive(webviewPanel, context.extensionUri);
+                const textDocument = vscode.window.activeTextEditor?.document;
+				LogicCircuitPanel.revive(webviewPanel, context.extensionUri, vscode.window.activeTextEditor?.document!);
 			}
 		});
 	}

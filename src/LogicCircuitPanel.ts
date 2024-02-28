@@ -17,9 +17,10 @@ export class LogicCircuitPanel
 	
 	private readonly _panel: vscode.WebviewPanel;
 	private readonly _extensionUri: vscode.Uri;
-	private _disposables: vscode.Disposable[] = [];
+    private readonly _textDocument: vscode.TextDocument;
+    private _disposables: vscode.Disposable[] = [];
 
-	public static createOrShow(extensionUri: vscode.Uri) {
+	public static createOrShow(extensionUri: vscode.Uri, textDocument: vscode.TextDocument) {
 		const column = vscode.window.activeTextEditor
 			? vscode.window.activeTextEditor.viewColumn
 			: undefined;
@@ -38,17 +39,18 @@ export class LogicCircuitPanel
 			getWebviewOptions(extensionUri),
 		);
 
-		LogicCircuitPanel.currentPanel = new LogicCircuitPanel(panel, extensionUri);
+		LogicCircuitPanel.currentPanel = new LogicCircuitPanel(panel, extensionUri, textDocument);
 	}
 
-	public static revive(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
-		LogicCircuitPanel.currentPanel = new LogicCircuitPanel(panel, extensionUri);
+	public static revive(panel: vscode.WebviewPanel, extensionUri: vscode.Uri, textDocument: vscode.TextDocument) {
+		LogicCircuitPanel.currentPanel = new LogicCircuitPanel(panel, extensionUri, textDocument);
 	}
 
-	private constructor(panel: vscode.WebviewPanel, extensionUri: vscode.Uri)
+	private constructor(panel: vscode.WebviewPanel, extensionUri: vscode.Uri, textDocument: vscode.TextDocument)
 	{
 		this._panel = panel;
 		this._extensionUri = extensionUri;
+        this._textDocument = textDocument;
 
 		// Set the webview's initial html content.
 		this._update();
