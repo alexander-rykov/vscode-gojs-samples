@@ -13,7 +13,7 @@ function getWebviewOptions(extensionUri: vscode.Uri): vscode.WebviewOptions {
 export class LogicCircuitPanel
 {
 	public static currentPanel: LogicCircuitPanel | undefined;
-	public static readonly viewType = 'logicCircuitPanel';
+	public static readonly viewType = 'logicCircuit';
 	
 	private readonly _panel: vscode.WebviewPanel;
 	private readonly _extensionUri: vscode.Uri;
