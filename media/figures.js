@@ -5947,6 +5947,24 @@ go.Shape.defineFigureGenerator("4Arrows", function(shape, w, h) {
   return geo;
 });
 
+go.Shape.defineFigureGenerator("DanfossInputs", function(shape, w, h) {
+  const geo = new go.Geometry();
+  const fig1 = new go.PathFigure(0, 0, true);
+  geo.add(fig1);
+
+  fig1.add(new go.PathSegment(go.PathSegment.Line, w * .7, 0));
+  fig1.add(new go.PathSegment(go.PathSegment.Line, w * 0.95, h * .5));
+  fig1.add(new go.PathSegment(go.PathSegment.Line, w * .7, h));
+  fig1.add(new go.PathSegment(go.PathSegment.Line, 0, h).close());
+
+  const fig2 = new go.PathFigure(0, 0, false);
+  fig1.add(new go.PathSegment(go.PathSegment.Move, w * .95, h * 0.5));
+  fig1.add(new go.PathSegment(go.PathSegment.Line, w, h * 0.5));
+  geo.add(fig2);
+
+  return geo;
+});
+
 go.Shape.defineFigureGenerator("Connector", "Ellipse");
 go.Shape.defineFigureGenerator("Alternative", "TriangleUp");
 go.Shape.defineFigureGenerator("Merge", "TriangleUp");
