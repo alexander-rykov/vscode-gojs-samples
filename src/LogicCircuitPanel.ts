@@ -112,6 +112,8 @@ export class LogicCircuitPanel
 		const logicCircuitPathOnDisk = vscode.Uri.joinPath(this._extensionUri, 'media', 'logic-circuit.js');
 		const logicCircuitUri = webview.asWebviewUri(logicCircuitPathOnDisk);
 
+        const text = this._textDocument.getText();
+
 		// Use a nonce to only allow specific scripts to be run
 		const nonce = this._getNonce();
 
@@ -126,9 +128,8 @@ export class LogicCircuitPanel
 	<title>Danfoss</title>
 </head>
 <body>
-	<script nonce="${nonce}" src="${goJsUri}"></script>
-	<script nonce="${nonce}" src="${figuresUri}"></script>
-	<script id="code" nonce="${nonce}" src="${logicCircuitUri}"></script>
+	<script src="${goJsUri}"></script>
+	<script src="${figuresUri}"></script>
 	<div id="sample">
 		<div style="width: 100%; display: flex; justify-content: space-between">
 			<div id="palette" style="width: 100px; height: 500px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
@@ -136,37 +137,16 @@ export class LogicCircuitPanel
 		</div>
 		<div>
 			<div>
-				<button id="saveModel" onclick="save()">Save</button>
-				<button onclick="load()">Load</button>
+				<button id="saveModel">Save</button>
+				<button id="loadModel">Load</button>
 				Diagram Model saved in JSON format:
 			</div>
-			<textarea id="mySavedModel" style="width:100%;height:200px">
-{ "class": "go.GraphLinksModel",
-	"linkFromPortIdProperty": "fromPort",
-	"linkToPortIdProperty": "toPort",
-	"nodeDataArray": [
-{"category":"input", "key":"input1", "loc":"-150 -80" },
-{"category":"or", "key":"or1", "loc":"-70 0" },
-{"category":"not", "key":"not1", "loc":"10 0" },
-{"category":"xor", "key":"xor1", "loc":"100 0" },
-{"category":"or", "key":"or2", "loc":"200 0" },
-{"category":"output", "key":"output1", "loc":"200 -100" }
-	],
-	"linkDataArray": [
-{"from":"input1", "fromPort":"out", "to":"or1", "toPort":"in1"},
-{"from":"or1", "fromPort":"out", "to":"not1", "toPort":"in"},
-{"from":"not1", "fromPort":"out", "to":"or1", "toPort":"in2"},
-{"from":"not1", "fromPort":"out", "to":"xor1", "toPort":"in1"},
-{"from":"xor1", "fromPort":"out", "to":"or2", "toPort":"in1"},
-{"from":"or2", "fromPort":"out", "to":"xor1", "toPort":"in2"},
-{"from":"xor1", "fromPort":"out", "to":"output1", "toPort":""}
-	]}
-			</textarea>
+			<textarea id="mySavedModel" style="width:100%;height:200px">${text}</textarea>
 		</div>
 	</div>
+	<script id="code" src="${logicCircuitUri}"></script>
 </body>
-</html>
-`;
+</html>`;
 	}
 
 	private _getNonce() {
