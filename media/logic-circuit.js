@@ -92,8 +92,14 @@
 
         const input2Template =
             $(go.Node, "Spot", nodeStyle(),
-                $(go.Shape, "DanfossInputs", shapeStyle(), { fill: white, desiredSize: new go.Size(140, 60) }),
+                $(go.Shape, "DfsInputs", shapeStyle(), { fill: white, desiredSize: new go.Size(140, 60) }),
                 $(go.Shape, "Rectangle", portStyle(false), { portId: "", alignment: new go.Spot(1, 0.5) })
+            );
+
+        const output2Template =
+            $(go.Node, "Spot", nodeStyle(),
+                $(go.Shape, "DfsOutputs", shapeStyle(), { fill: white, desiredSize: new go.Size(140, 60) }),
+                $(go.Shape, "Rectangle", portStyle(true), { portId: "", alignment: new go.Spot(0, 0.5) })
             );
 
         // define templates for each type of node
@@ -199,6 +205,7 @@
 
         // add the templates created above to myDiagram and palette
         myDiagram.nodeTemplateMap.add("input2", input2Template);
+        myDiagram.nodeTemplateMap.add("output2", output2Template);
         myDiagram.nodeTemplateMap.add("input", inputTemplate);
         myDiagram.nodeTemplateMap.add("output", outputTemplate);
         myDiagram.nodeTemplateMap.add("and", andTemplate);
@@ -214,6 +221,7 @@
 
         palette.model.nodeDataArray = [
             { category: "input2" },
+            { category: "output2" },
             { category: "input" },
             { category: "output" },
             { category: "and" },

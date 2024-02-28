@@ -5947,7 +5947,7 @@ go.Shape.defineFigureGenerator("4Arrows", function(shape, w, h) {
   return geo;
 });
 
-go.Shape.defineFigureGenerator("DanfossInputs", function(shape, w, h) {
+go.Shape.defineFigureGenerator("DfsInputs", function(shape, w, h) {
   const geo = new go.Geometry();
   const fig1 = new go.PathFigure(0, 0, true);
   geo.add(fig1);
@@ -5959,7 +5959,26 @@ go.Shape.defineFigureGenerator("DanfossInputs", function(shape, w, h) {
 
   const fig2 = new go.PathFigure(0, 0, false);
   fig1.add(new go.PathSegment(go.PathSegment.Move, w * .95, h * 0.5));
-  fig1.add(new go.PathSegment(go.PathSegment.Line, w, h * 0.5));
+  fig1.add(new go.PathSegment(go.PathSegment.Line, w, h * 0.5).close());
+  geo.add(fig2);
+
+  return geo;
+});
+
+go.Shape.defineFigureGenerator("DfsOutputs", function(shape, w, h) {
+  const geo = new go.Geometry();
+  const fig1 = new go.PathFigure(0, 0, true);
+  geo.add(fig1);
+
+  fig1.add(new go.PathSegment(go.PathSegment.Move, w * .05, 0));
+  fig1.add(new go.PathSegment(go.PathSegment.Line, w * .7, 0));
+  fig1.add(new go.PathSegment(go.PathSegment.Line, w, h * .5));
+  fig1.add(new go.PathSegment(go.PathSegment.Line, w * .7, h));
+  fig1.add(new go.PathSegment(go.PathSegment.Line, w * .05, h).close());
+
+  const fig2 = new go.PathFigure(0, 0, false);
+  fig1.add(new go.PathSegment(go.PathSegment.Move, 0, h * 0.5));
+  fig1.add(new go.PathSegment(go.PathSegment.Line, w * 0.05, h * 0.5).close());
   geo.add(fig2);
 
   return geo;
