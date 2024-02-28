@@ -85,6 +85,7 @@ export class LogicCircuitPanel
 	}
 
 	private _update() {
+        console.log('_update');
 		const webview = this._panel.webview;
 
 		this._panel.title = 'Logic Circuit';
