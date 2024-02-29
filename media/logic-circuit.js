@@ -93,13 +93,29 @@
         const input2Template =
             $(go.Node, "Spot", nodeStyle(),
                 $(go.Shape, "DfsInputs", shapeStyle(), { fill: white, desiredSize: new go.Size(140, 60) }),
-                $(go.Shape, "Rectangle", portStyle(false), { portId: "", alignment: new go.Spot(1, 0.5) })
+                $(go.Shape, "Rectangle", portStyle(false), { portId: "", alignment: new go.Spot(1, 0.5) }),
+                $(go.Panel, "Horizontal", { margin: 8 },
+                    $(go.TextBlock, { text: 'Inputs' })
+                )
             );
 
         const output2Template =
             $(go.Node, "Spot", nodeStyle(),
                 $(go.Shape, "DfsOutputs", shapeStyle(), { fill: white, desiredSize: new go.Size(140, 60) }),
-                $(go.Shape, "Rectangle", portStyle(true), { portId: "", alignment: new go.Spot(0, 0.5) })
+                $(go.Shape, "Rectangle", portStyle(true), { portId: "", alignment: new go.Spot(0, 0.5) }),
+                $(go.Panel, "Horizontal", { margin: 8 },
+                    $(go.TextBlock, { text: 'Outputs' })
+                )
+            );
+
+        const applicationTemplate =
+            $(go.Node, "Spot", nodeStyle(),
+                $(go.Shape, "DfsApplication", shapeStyle(), { fill: white, desiredSize: new go.Size(150, 130) }),
+                $(go.Shape, "Rectangle", portStyle(true), { portId: "in", alignment: new go.Spot(0, 0.75) }),
+                $(go.Shape, "Rectangle", portStyle(false), { portId: "out", alignment: new go.Spot(1, 0.75) }),
+                $(go.Panel, "Horizontal", { margin: 8 },
+                    $(go.TextBlock, { text: 'Application' })
+                )
             );
 
         // define templates for each type of node
@@ -206,6 +222,7 @@
         // add the templates created above to myDiagram and palette
         myDiagram.nodeTemplateMap.add("input2", input2Template);
         myDiagram.nodeTemplateMap.add("output2", output2Template);
+        myDiagram.nodeTemplateMap.add("application", applicationTemplate);
         myDiagram.nodeTemplateMap.add("input", inputTemplate);
         myDiagram.nodeTemplateMap.add("output", outputTemplate);
         myDiagram.nodeTemplateMap.add("and", andTemplate);
@@ -222,6 +239,7 @@
         palette.model.nodeDataArray = [
             { category: "input2" },
             { category: "output2" },
+            { category: "application" },
             { category: "input" },
             { category: "output" },
             { category: "and" },

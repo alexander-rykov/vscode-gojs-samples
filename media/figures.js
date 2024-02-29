@@ -5984,6 +5984,29 @@ go.Shape.defineFigureGenerator("DfsOutputs", function(shape, w, h) {
   return geo;
 });
 
+go.Shape.defineFigureGenerator("DfsApplication", function(shape, w, h) {
+  const geo = new go.Geometry();
+  const fig1 = new go.PathFigure(0, 0, true);
+  geo.add(fig1);
+
+  fig1.add(new go.PathSegment(go.PathSegment.Move, w * .05, 0));
+  fig1.add(new go.PathSegment(go.PathSegment.Line, w * .95, 0));
+  fig1.add(new go.PathSegment(go.PathSegment.Line, w * .95, h));
+  fig1.add(new go.PathSegment(go.PathSegment.Line, w * .05, h).close());
+
+  const fig2 = new go.PathFigure(0, 0, false);
+  fig2.add(new go.PathSegment(go.PathSegment.Move, 0, h * .75));
+  fig2.add(new go.PathSegment(go.PathSegment.Line, w * .05, h * .75).close());
+  geo.add(fig2);
+
+  const fig3 = new go.PathFigure(0, 0, false);
+  fig3.add(new go.PathSegment(go.PathSegment.Move, w * .95, h * .75));
+  fig3.add(new go.PathSegment(go.PathSegment.Line, w, h * .75).close());
+  geo.add(fig3);
+
+  return geo;
+});
+
 go.Shape.defineFigureGenerator("Connector", "Ellipse");
 go.Shape.defineFigureGenerator("Alternative", "TriangleUp");
 go.Shape.defineFigureGenerator("Merge", "TriangleUp");
