@@ -36,4 +36,4 @@ $ npm run compile
 
 - Open sample [json file](./samples/logic-circuit01.json).
 
-- Run the 'Go JS: Open Logic Circuit'.
+- Run the 'GoJS: Open Logic Circuit'
