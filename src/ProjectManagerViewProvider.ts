@@ -38,6 +38,11 @@ export class ProjectManagerViewProvider implements vscode.WebviewViewProvider {
 		const scriptUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'jstree', 'jstree.min.js'));
         const jQueryUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'jquery.min.js'));
 		const styleUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'jstree', 'themes', 'default', 'style.min.css'));
+        const icon01Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon01.png'));
+        const icon02Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon02.png'));
+        const icon03Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon03.png'));
+        const icon04Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon04.png'));
+        const icon05Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon05.png'));
 
 		// Use a nonce to only allow a specific script to be run.
 		const nonce = getNonce();
@@ -61,20 +66,20 @@ export class ProjectManagerViewProvider implements vscode.WebviewViewProvider {
 <body>
     <div id="jstree">
         <ul>
-            <li>Test.p1x</li>
-            <li>
+            <li data-jstree='{"icon":"${icon01Uri}"}'>Test.p1x</li>
+            <li data-jstree='{"icon":"${icon02Uri}"}'>
                 Outputs
                 <ul>
-                    <li>Test.lhx</li>
+                    <li data-jstree='{"icon":"${icon03Uri}"}'>Test.lhx</li>
                 </ul>
             </li>
-            <li>
+            <li data-jstree='{"icon":"${icon04Uri}"}'>
                 HWD
                 <ul>
-                    <li>
+                    <li data-jstree='{"icon":"${icon04Uri}"}'>
                         MC050-110/112-0_nl ver:70089372v190 (SYS:70089370v190)
                         <ul>
-                            <li>70089370v190.sys</li>
+                            <li data-jstree='{"icon":"${icon05Uri}"}'>70089370v190.sys</li>
                         </ul>
                     </li>
                 </ul>
