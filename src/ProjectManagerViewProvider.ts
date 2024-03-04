@@ -43,6 +43,10 @@ export class ProjectManagerViewProvider implements vscode.WebviewViewProvider {
         const icon03Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon03.png'));
         const icon04Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon04.png'));
         const icon05Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon05.png'));
+        const icon06Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon06.png'));
+        const icon07Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon07.png'));
+        const icon08Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon08.png'));
+        const icon09Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon09.png'));
 
 		// Use a nonce to only allow a specific script to be run.
 		const nonce = getNonce();
@@ -84,19 +88,19 @@ export class ProjectManagerViewProvider implements vscode.WebviewViewProvider {
                     </li>
                 </ul>
             </li>
-            <li>
+            <li data-jstree='{"icon":"${icon06Uri}"}'>
                 Modules
                 <ul>
-                    <li>MC050_110_nl__MC050_112T.scs</li>
+                    <li data-jstree='{"icon":"${icon06Uri}"}'>MC050_110_nl__MC050_112T.scs</li>
                 </ul>
             </li>
-            <li>
+            <li data-jstree='{"icon":"${icon07Uri}"}'>
                 Service Tool data
                 <ul>
-                    <li>Application ID</li>
+                    <li data-jstree='{"icon":"${icon08Uri}"}'>Application ID</li>
                 </ul>
             </li>
-            <li>Parameter Overview</li>
+            <li data-jstree='{"icon":"${icon09Uri}"}'>Parameter Overview</li>
         </ul>
     </div>
   <button>demo button</button>
