@@ -19,8 +19,13 @@
 				{
 					"type": "webview",
 					"id": "logicCircuit.projectView",
-					"name": "Logic Circuit"
-				}
+					"name": "GoJS: Logic Circuit"
+				},
+        {
+          "type": "webview",
+          "id": "logicCircuit.projectManagerView",
+          "name": "GoJS: Project View"
+        }
 			]
 		},
     "commands": [
