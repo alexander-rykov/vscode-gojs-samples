@@ -14,12 +14,30 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+		"views": {
+			"explorer": [
+				{
+					"type": "webview",
+					"id": "logicCircuit.projectView",
+					"name": "Logic Circuit"
+				}
+			]
+		},
     "commands": [
       {
         "command": "logicCircuit.start",
-        "title": "Go JS: Open Logic Circuit"
+        "title": "GoJS: Open Logic Circuit"
       }
-    ]
+    ],
+		"menus": {
+			"view/title": [
+				{
+					"command": "logicCircuit.start",
+					"group": "navigation",
+					"when": "view == logicCircuit.projectView"
+				}
+			]
+		}
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

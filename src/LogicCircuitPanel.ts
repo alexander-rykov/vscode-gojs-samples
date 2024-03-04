@@ -14,11 +14,11 @@ export class LogicCircuitPanel
 {
 	public static currentPanel: LogicCircuitPanel | undefined;
 	public static readonly viewType = 'logicCircuit';
-	
+
 	private readonly _panel: vscode.WebviewPanel;
 	private readonly _extensionUri: vscode.Uri;
-    private readonly _textDocument: vscode.TextDocument;
-    private _disposables: vscode.Disposable[] = [];
+	private readonly _textDocument: vscode.TextDocument;
+	private _disposables: vscode.Disposable[] = [];
 
 	public static createOrShow(extensionUri: vscode.Uri, textDocument: vscode.TextDocument) {
 		const column = vscode.window.activeTextEditor
@@ -85,7 +85,7 @@ export class LogicCircuitPanel
 	}
 
 	private _update() {
-        console.log('_update');
+		console.log('_update');
 		const webview = this._panel.webview;
 
 		this._panel.title = 'Logic Circuit';
@@ -124,7 +124,7 @@ export class LogicCircuitPanel
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"/>
-	<meta name="description" content="A simple logic circuit editor and simulator."/> 
+	<meta name="description" content="A simple logic circuit editor and simulator."/>
 	<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; img-src ${webview.cspSource} https:; script-src 'nonce-${nonce}';"> -->
 	<title>Danfoss</title>
 </head>
@@ -133,7 +133,7 @@ export class LogicCircuitPanel
 	<script src="${figuresUri}"></script>
 	<div id="sample">
 		<div style="width: 100%; display: flex; justify-content: space-between">
-			<div id="palette" style="width: 100px; height: 500px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
+			<div id="palette" style="width: 250px; height: 500px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
 			<div id="myDiagramDiv" style="flex-grow: 1; height: 500px; border: solid 1px black"></div>
 		</div>
 		<div>
@@ -156,7 +156,7 @@ export class LogicCircuitPanel
 		for (let i = 0; i < 32; i++) {
 			text += possible.charAt(Math.floor(Math.random() * possible.length));
 		}
-		return text;	
+		return text;
 	}
 
 	public dispose() {
