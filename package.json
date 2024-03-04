@@ -16,11 +16,6 @@
   "contributes": {
 		"views": {
 			"explorer": [
-				{
-					"type": "webview",
-					"id": "logicCircuit.projectView",
-					"name": "GoJS: Logic Circuit"
-				},
         {
           "type": "webview",
           "id": "logicCircuit.projectManagerView",
@@ -39,7 +34,7 @@
 				{
 					"command": "logicCircuit.start",
 					"group": "navigation",
-					"when": "view == logicCircuit.projectView"
+					"when": "view == logicCircuit.projectManagerView"
 				}
 			]
 		}
