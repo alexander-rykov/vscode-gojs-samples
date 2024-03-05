@@ -103,7 +103,7 @@ export class ProjectManagerViewProvider implements vscode.WebviewViewProvider {
             <li data-jstree='{"icon":"${icon09Uri}"}'>Parameter Overview</li>
         </ul>
     </div>
-  <button>demo button</button>
+    <!-- <button>demo button</button> -->
 
     <script src="${jQueryUri}"></script>
     <script nonce="${nonce}" src="${scriptUri}"></script>
@@ -116,11 +116,11 @@ export class ProjectManagerViewProvider implements vscode.WebviewViewProvider {
           console.log(data.selected);
         });
         // 8 interact with the tree - either way is OK
-        $('button').on('click', function () {
-          $('#jstree').jstree(true).select_node('child_node_1');
-          $('#jstree').jstree('select_node', 'child_node_1');
-          $.jstree.reference('#jstree').select_node('child_node_1');
-        });
+        // $('button').on('click', function () {
+        //   $('#jstree').jstree(true).select_node('child_node_1');
+        //   $('#jstree').jstree('select_node', 'child_node_1');
+        //   $.jstree.reference('#jstree').select_node('child_node_1');
+        // });
       });
     </script>
 </body>

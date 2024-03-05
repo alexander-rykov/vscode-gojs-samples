@@ -1,0 +1,14 @@
+{
+    "class": "go.GraphLinksModel",
+    "linkFromPortIdProperty": "fromPort",
+    "linkToPortIdProperty": "toPort",
+    "nodeDataArray": [
+        {
+            "category": "fullDiagram",
+            "key": "fullDiagram1",
+            "loc": "-150 -80"
+        }
+    ],
+    "linkDataArray": [
+    ]
+}

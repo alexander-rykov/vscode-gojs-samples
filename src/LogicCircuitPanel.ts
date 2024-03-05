@@ -113,6 +113,12 @@ export class LogicCircuitPanel
 		const logicCircuitPathOnDisk = vscode.Uri.joinPath(this._extensionUri, 'media', 'logic-circuit.js');
 		const logicCircuitUri = webview.asWebviewUri(logicCircuitPathOnDisk);
 
+		const application01PathOnDisk = vscode.Uri.joinPath(this._extensionUri, 'media', 'application01.png');
+		const application01Uri = webview.asWebviewUri(application01PathOnDisk);
+
+        const fullDiagram01PathOnDisk = vscode.Uri.joinPath(this._extensionUri, 'media', 'full-diagram01.png');
+        const fullDiagram01Uri = webview.asWebviewUri(fullDiagram01PathOnDisk);
+
         const text = this._textDocument.getText();
 
 		// Use a nonce to only allow specific scripts to be run
@@ -129,14 +135,18 @@ export class LogicCircuitPanel
 	<title>Danfoss</title>
 </head>
 <body>
+    <script>
+        var application01Uri = '${application01Uri}';
+        var fullDiagram01Uri = '${fullDiagram01Uri}';
+    </script>
 	<script src="${goJsUri}"></script>
 	<script src="${figuresUri}"></script>
 	<div id="sample">
 		<div style="width: 100%; display: flex; justify-content: space-between">
-			<div id="palette" style="width: 250px; height: 500px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
-			<div id="myDiagramDiv" style="flex-grow: 1; height: 500px; border: solid 1px black"></div>
+			<div id="palette" style="display: none; width: 2px; height: 1000px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
+			<div id="myDiagramDiv" style="flex-grow: 1; height: 1000px; border: solid 0px black"></div>
 		</div>
-		<div>
+		<div style="display: none;">
 			<div>
 				<button id="saveModel">Save</button>
 				<button id="loadModel">Load</button>

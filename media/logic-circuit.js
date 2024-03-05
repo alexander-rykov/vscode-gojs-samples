@@ -110,12 +110,27 @@
 
         const applicationTemplate =
             $(go.Node, "Spot", nodeStyle(),
-                $(go.Shape, "DfsApplication", shapeStyle(), { fill: white, desiredSize: new go.Size(150, 130) }),
+                $(go.Picture, window.application01Uri, { background: "gray", width: 216, height: 192 }),
                 $(go.Shape, "Rectangle", portStyle(true), { portId: "in", alignment: new go.Spot(0, 0.75) }),
                 $(go.Shape, "Rectangle", portStyle(false), { portId: "out", alignment: new go.Spot(1, 0.75) }),
                 $(go.Panel, "Horizontal", { margin: 8 },
                     $(go.TextBlock, { text: 'Application' })
                 )
+            );
+
+        // const applicationTemplate =
+        //     $(go.Node, "Spot", nodeStyle(),
+        //         $(go.Shape, "DfsApplication", shapeStyle(), { fill: white, desiredSize: new go.Size(150, 130) }),
+        //         $(go.Shape, "Rectangle", portStyle(true), { portId: "in", alignment: new go.Spot(0, 0.75) }),
+        //         $(go.Shape, "Rectangle", portStyle(false), { portId: "out", alignment: new go.Spot(1, 0.75) }),
+        //         $(go.Panel, "Horizontal", { margin: 8 },
+        //             $(go.TextBlock, { text: 'Application' })
+        //         )
+        //     );
+
+        const fullDiagram =
+            $(go.Node, "Spot", nodeStyle(),
+                $(go.Picture, window.fullDiagram01Uri, { background: "gray", width: 703, height: 505 })
             );
 
         // define templates for each type of node
@@ -223,6 +238,7 @@
         myDiagram.nodeTemplateMap.add("input2", input2Template);
         myDiagram.nodeTemplateMap.add("output2", output2Template);
         myDiagram.nodeTemplateMap.add("application", applicationTemplate);
+        myDiagram.nodeTemplateMap.add("fullDiagram", fullDiagram);
         myDiagram.nodeTemplateMap.add("input", inputTemplate);
         myDiagram.nodeTemplateMap.add("output", outputTemplate);
         myDiagram.nodeTemplateMap.add("and", andTemplate);
@@ -237,18 +253,19 @@
         palette.nodeTemplateMap = myDiagram.nodeTemplateMap;
 
         palette.model.nodeDataArray = [
+            { category: "fullDiagram" },
             { category: "input2" },
             { category: "output2" },
             { category: "application" },
-            { category: "input" },
-            { category: "output" },
-            { category: "and" },
-            { category: "or" },
-            { category: "xor" },
-            { category: "not" },
-            { category: "nand" },
-            { category: "nor" },
-            { category: "xnor" }
+            // { category: "input" },
+            // { category: "output" },
+            // { category: "and" },
+            // { category: "or" },
+            // { category: "xor" },
+            // { category: "not" },
+            // { category: "nand" },
+            // { category: "nor" },
+            // { category: "xnor" }
         ];
 
         // load the initial diagram
@@ -284,6 +301,7 @@
                 case "nor": doNor(node); break;
                 case "xnor": doXnor(node); break;
                 case "output": doOutput(node); break;
+                case "full-diagram": doFullDiagram(node); break;
                 case "input": break;  // doInput already called, above
             }
         });
@@ -347,6 +365,9 @@
         // assume there is just one input link
         // we just need to update the node's Shape.fill
         node.linksConnected.each(link => { node.findObject("NODESHAPE").fill = link.findObject("SHAPE").stroke; });
+    }
+
+    function doFullDiagram(node) {
     }
 
     // save a model to and load a model from JSON text, displayed below the Diagram
