@@ -14,14 +14,28 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "component-view",
+					"title": "Danfoss",
+					"icon": "media/icon01.png"
+				}
+			]
+		},
 		"views": {
-			"explorer": [
+      "component-view": [
         {
           "type": "webview",
           "id": "logicCircuit.projectManagerView",
-          "name": "GoJS: Project View"
+          "name": "Project View"
+        },
+        {
+          "type": "webview",
+          "id": "logicCircuit.componentView",
+          "name": "Component"
         }
-			]
+      ]
 		},
     "commands": [
       {

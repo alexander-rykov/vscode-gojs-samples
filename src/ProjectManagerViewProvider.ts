@@ -2,51 +2,51 @@ import * as vscode from 'vscode';
 
 export class ProjectManagerViewProvider implements vscode.WebviewViewProvider {
 
-    public static readonly viewType = 'logicCircuit.projectManagerView';
+  public static readonly viewType = 'logicCircuit.projectManagerView';
 
-    private _view?: vscode.WebviewView;
-    private readonly _extensionUri: vscode.Uri;
+  private _view?: vscode.WebviewView;
+  private readonly _extensionUri: vscode.Uri;
 
-    constructor(extensionUri: vscode.Uri) {
-        this._extensionUri = extensionUri;
-    }
+  constructor(extensionUri: vscode.Uri) {
+      this._extensionUri = extensionUri;
+  }
 
-    public resolveWebviewView(view: vscode.WebviewView, context: vscode.WebviewViewResolveContext, token: vscode.CancellationToken) {
-        this._view = view;
+  public resolveWebviewView(view: vscode.WebviewView, context: vscode.WebviewViewResolveContext, token: vscode.CancellationToken) {
+    this._view = view;
 
-        view.webview.options = {
-            enableScripts: true,
+    view.webview.options = {
+        enableScripts: true,
 
-            // And restrict the webview to only loading content from our extension's `media` directory.
-            localResourceRoots: [vscode.Uri.joinPath(this._extensionUri, 'media')]
-        };
+        // And restrict the webview to only loading content from our extension's `media` directory.
+        localResourceRoots: [vscode.Uri.joinPath(this._extensionUri, 'media')]
+    };
 
-        view.webview.html = this._getHtmlForWebview(view.webview);
+    view.webview.html = this._getHtmlForWebview(view.webview);
 
-		view.webview.onDidReceiveMessage(data => {
-			switch (data.type) {
-				case 'viewItemSelected':
-					{
-						//vscode.window.activeTextEditor?.insertSnippet(new vscode.SnippetString(`#${data.value}`));
-						break;
-					}
-			}
-		});
-    }
+    view.webview.onDidReceiveMessage(data => {
+      switch (data.type) {
+        case 'viewItemSelected':
+          {
+            //vscode.window.activeTextEditor?.insertSnippet(new vscode.SnippetString(`#${data.value}`));
+            break;
+          }
+      }
+    });
+  }
 
 	private _getHtmlForWebview(webview: vscode.Webview) {
 		const scriptUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'jstree', 'jstree.min.js'));
-        const jQueryUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'jquery.min.js'));
+    const jQueryUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'jquery.min.js'));
 		const styleUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'jstree', 'themes', 'default', 'style.min.css'));
-        const icon01Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon01.png'));
-        const icon02Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon02.png'));
-        const icon03Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon03.png'));
-        const icon04Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon04.png'));
-        const icon05Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon05.png'));
-        const icon06Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon06.png'));
-        const icon07Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon07.png'));
-        const icon08Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon08.png'));
-        const icon09Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon09.png'));
+    const icon01Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon01.png'));
+    const icon02Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon02.png'));
+    const icon03Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon03.png'));
+    const icon04Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon04.png'));
+    const icon05Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon05.png'));
+    const icon06Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon06.png'));
+    const icon07Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon07.png'));
+    const icon08Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon08.png'));
+    const icon09Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon09.png'));
 
 		// Use a nonce to only allow a specific script to be run.
 		const nonce = getNonce();
@@ -103,7 +103,6 @@ export class ProjectManagerViewProvider implements vscode.WebviewViewProvider {
             <li data-jstree='{"icon":"${icon09Uri}"}'>Parameter Overview</li>
         </ul>
     </div>
-    <!-- <button>demo button</button> -->
 
     <script src="${jQueryUri}"></script>
     <script nonce="${nonce}" src="${scriptUri}"></script>

@@ -2,10 +2,12 @@ import * as vscode from 'vscode';
 import { LogicCircuitPanel } from './LogicCircuitPanel';
 import { LogicCircuitViewProvider } from "./LogicCircuitViewProvider";
 import { ProjectManagerViewProvider } from './ProjectManagerViewProvider';
+import { LogicCircuitComponentViewProvider } from './LogicCircuitComponentViewProvider';
 
 export function activate(context: vscode.ExtensionContext) {
-	activateLogicCircuitViewProvider(context);
-    activateProjectManagerViewProvider(context);
+	// activateLogicCircuitViewProvider(context);
+	activateProjectManagerViewProvider(context);
+	activateComponentViewProvider(context);
 	activateLogicCircuitPanel(context);
 }
 
@@ -77,6 +79,36 @@ function activateProjectManagerViewProvider(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
 		vscode.window.registerWebviewViewProvider(ProjectManagerViewProvider.viewType, provider)
+	);
+
+	// context.subscriptions.push(
+	// 	vscode.commands.registerCommand('logicCircuit.addCircuit', () => {
+	// 		provider.addCircuit();
+	// 	})
+	// );
+
+	// context.subscriptions.push(
+	// 	vscode.commands.registerCommand('logicCircuit.clear', () => {
+	// 		provider.clearView();
+	// 	})
+	// );
+
+	// TODO: Set actions trigger from Command Pallet or CTRL + SHIFT + P shortcut
+	// context.subscriptions.push(
+	// 	vscode.commands.registerCommand(LogicCircuitViewProvider.TODO, () => {
+	// 		logicCircuitViewProvider.TODO();
+	// 	})
+	// );
+}
+
+function activateComponentViewProvider(context: vscode.ExtensionContext) {
+	// Explorer View Provider
+	vscode.window.showInformationMessage('Activating ComponentViewProvider');
+
+	const provider = new LogicCircuitComponentViewProvider(context.extensionUri);
+
+	context.subscriptions.push(
+		vscode.window.registerWebviewViewProvider(LogicCircuitComponentViewProvider.viewType, provider)
 	);
 
 	// context.subscriptions.push(
