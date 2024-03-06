@@ -47,10 +47,27 @@ export class LogicCircuitComponentViewProvider implements vscode.WebviewViewProv
     const icon07Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon07.png'));
     const icon08Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon08.png'));
     const icon09Uri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'icon09.png'));
-    const general = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps', 'general.png'));
-    const compare = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps', 'compare.png'));
-    const limit = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps', 'limit.png'));
-    const math = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps', 'math.png'));
+
+    // Components
+    const access = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'access.png'));
+    const applicationlog = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'application-log.png'));
+    const array = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'array.png'));
+    const cloud = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'cloud.png'));
+    const compare = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'compare.png'));
+    const connection = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'connection.png'));
+    const constant = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'constant.png'));
+    const dataconversion = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'data-conversion.png'));
+    const display = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'display.png'));
+    const folder = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'folder.png'));
+    const general = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'general.png'));
+    const limit = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'limit.png'));
+    const logical = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'logical.png'));
+    const manage = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'manage.png'));
+    const math = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'math.png'));
+    const module_ = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'module.png'));
+    const readonlyparameter = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'readonly-parameter.png'));
+    const switch_ = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'switch.png'));
+    const transitiontime = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, 'media', 'comps',  'transition-time.png'));
 
 		// Use a nonce to only allow a specific script to be run.
 		const nonce = getNonce();
@@ -106,22 +123,22 @@ export class LogicCircuitComponentViewProvider implements vscode.WebviewViewProv
             </li>
             <li data-jstree='{"icon":"${limit}"}'>Limit</li>
             <li data-jstree='{"icon":"${compare}"}'>Compare</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Constant</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Logical</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Switch, Counter, Memory</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Array</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Data Conversion</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Transition, Time</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Connection</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Module</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Manage</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Access</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Read-only Parameter</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Display</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Application Log</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Cloud</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Recently Used</li>
-            <li data-jstree='{"icon":"${icon06Uri}"}'>Favorites</li>
+            <li data-jstree='{"icon":"${constant}"}'>Constant</li>
+            <li data-jstree='{"icon":"${logical}"}'>Logical</li>
+            <li data-jstree='{"icon":"${switch_}"}'>Switch, Counter, Memory</li>
+            <li data-jstree='{"icon":"${array}"}'>Array</li>
+            <li data-jstree='{"icon":"${dataconversion}"}'>Data Conversion</li>
+            <li data-jstree='{"icon":"${transitiontime}"}'>Transition, Time</li>
+            <li data-jstree='{"icon":"${connection}"}'>Connection</li>
+            <li data-jstree='{"icon":"${module_}"}'>Module</li>
+            <li data-jstree='{"icon":"${manage}"}'>Manage</li>
+            <li data-jstree='{"icon":"${access}"}'>Access</li>
+            <li data-jstree='{"icon":"${readonlyparameter}"}'>Read-only Parameter</li>
+            <li data-jstree='{"icon":"${display}"}'>Display</li>
+            <li data-jstree='{"icon":"${applicationlog}"}'>Application Log</li>
+            <li data-jstree='{"icon":"${cloud}"}'>Cloud</li>
+            <li data-jstree='{"icon":"${folder}"}'>Recently Used</li>
+            <li data-jstree='{"icon":"${folder}"}'>Favorites</li>
         </ul>
     </div>
 

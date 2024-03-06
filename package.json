@@ -18,8 +18,8 @@
 			"activitybar": [
 				{
 					"id": "component-view",
-					"title": "Danfoss",
-					"icon": "media/icon01.png"
+					"title": "Danfoss +1",
+					"icon": "media/danfoss.svg"
 				}
 			]
 		},
